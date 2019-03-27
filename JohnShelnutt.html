@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" type="image/png" href="favicon.ico">
+		<title>John Shelnutt's Page</title>
+
+		
+	</head>
+
+	<body style="background-color: LightBlue">
+		<h1>John Shelnutt's Page</h1>
+
+		<h3>
+			This website features an interactive quiz on facts and details about the moon. To prepare for this quiz and for further reading, check out the <a href="https://space-facts.com/the-moon/" target="_blank">moon facts page</a> on the <a href="https://space-facts.com" target="_blank">space facts website</a>.
+		</h3>
+
+		<form>
+			<output><h4 style="margin-bottom:-10px">What is the moon's mass compared to Earth's?</h4></output><br>
+			<label><input type="radio" name="question1" class="question-option" style="margin-right: 5px" onclick="Wrong(1)">10%</label><br>
+			<label><input type="radio" name="question1" class="question-option" style="margin-right: 5px" onclick="Right(1)">1%</label><br>
+			<label><input type="radio" name="question1" class="question-option" style="margin-right: 5px" onclick="Wrong(1)">5%</label><br>
+			<output class="output" id="question-1-output"></output>
+		</form>
+
+		<form>
+			<output><h4 style="margin-bottom:-10px">About how many days does the moon take to go around the Earth?</h4></output><br>
+			<label><input type="radio" name="question2" class="question-option" style="margin-right: 5px" onclick="Right(2)">27 days</label><br>
+			<label><input type="radio" name="question2" class="question-option" style="margin-right: 5px" onclick="Wrong(2)">9 days</label><br>
+			<label><input type="radio" name="question2" class="question-option" style="margin-right: 5px" onclick="Wrong(2)">48 days</label><br>
+			<output class="output" id="question-2-output"></output>
+		</form>
+
+		<form>
+			<output><h4 style="margin-bottom: -10px">Which moon shown below is Earth's? (Click on an image to answer)</h4></output><br>
+			<label><input type="radio" name="question3" class="question-option" style="display:none" onclick="Right(3)">
+				<img src="option1.png" style="width:21%;height:21%">
+			</label>
+
+			<label><input type="radio" name="question3" class="question-option" style="display:none" onclick="Wrong(3)">
+				<img src="option2.png" style="width:14%;height:14%;position:relative;margin-left:-30px;top:-15px">
+			</label>
+
+			<label><input type="radio" name="question3" class="question-option" style="display:none"; onclick="Wrong(3)">
+				<img src="option3.png" style="width:14%;height:14%;position:relative;margin-left: 30px;top:-12px">
+			</label><br>
+			<output class="output" id="question-3-output"></output>
+		</form>
+
+		<button id="reset" onclick="reset()" style="margin-top: 35px">Reset</button>
+
+		<script>
+			function reset() {
+				let outputs = document.getElementsByClassName("output");
+				for (let i = 0; i < outputs.length; i++) {
+					outputs[i].innerHTML = "";
+				}
+				let choices = document.getElementsByClassName("question-option");
+				for(let j = 0; j < choices.length; j++) {
+					choices[j].checked = false;
+				}
+			}
+
+			function Right(num) {
+				let text = document.getElementById(`question-${num}-output`);
+				text.style.color = "green";
+				text.innerHTML = "Correct!";
+			}
+
+			function Wrong(num) {
+				let text = document.getElementById(`question-${num}-output`);
+				text.style.color = "red";
+				text.innerHTML = "Incorrect.";
+			}
+		</script>
+	</body>
+</html>
